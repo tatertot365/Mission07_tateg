@@ -11,8 +11,6 @@ namespace Mission06_Movies.Models
 		[Required]
 		public int MovieID { get; set; }
 		[Required]
-		public string Category { get; set; }
-		[Required]
 		public string Title { get; set; }
 		[Required]
 		public int Year { get; set; }
@@ -24,6 +22,12 @@ namespace Mission06_Movies.Models
 		public string LentTo { set; get; }
 		[StringLength(25)]
 		public string Notes { set; get; }
-	}
+
+		// New model with foreign key relationship
+        [Required]
+        public int CategoryID { get; set; }
+		public Category Category { get; set; }
+
+    }
 }
 

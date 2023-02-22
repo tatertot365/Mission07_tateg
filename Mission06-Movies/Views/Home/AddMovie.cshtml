@@ -8,20 +8,26 @@
 <!-- This is the AddMovie view which contains the form for adding a movie to the database -->
 @model Mission06_Movies.Models.MovieResponse
 <div>
-    <form method="post" asp-controller="Home" asp-action="AddMovie">
+    <form method="post">
+        <div asp-validation-summary="All"></div>
 
         <!-- Validation is provided on the front-end and the model so as to provide a better experience for the user and better validation-->
-        <label asp-for="Category" >Category:</label>
-        <input asp-for="Category" required/><br />
+        <label asp-for="CategoryID">Category:</label>
+        <select asp-for="CategoryID">
+            @foreach (Category x in ViewBag.Categories)
+            {
+                <option value="@x.CategoryID">@x.CategoryName</option>
+            }
+        </select><br />
 
         <label asp-for="Title">Title:</label>
-        <input asp-for="Title" required/><br />
+        <input asp-for="Title" required /><br />
 
         <label asp-for="Year">Year:</label>
-        <input asp-for="Year" required/><br />
+        <input asp-for="Year" required /><br />
 
         <label asp-for="Director">Director:</label>
-        <input asp-for="Director" required/><br />
+        <input asp-for="Director" required /><br />
 
         <label asp-for="Rating">Rating:</label>
         <select asp-for="Rating" required>
@@ -39,10 +45,10 @@
         </select><br />
 
         <label asp-for="LentTo">Lent To:</label>
-        <input asp-for="LentTo"/><br />
+        <input asp-for="LentTo" /><br />
 
         <label asp-for="Notes">Notes:</label>
-        <input asp-for="Notes" maxlength="25"/><br />
+        <input asp-for="Notes" maxlength="25" /><br />
 
         <button type="submit">Submit Movie</button>
     </form>
